@@ -56,28 +56,34 @@ void insertAfter(Node*previous,int newValue) {
   newNode->Next=previous->Next;
   previous->Next=newNode;
 }
+
+void printLastThirdNode(Node* n) {
+  while((n->Next->Next->Next)!=NULL) {
+    n=n->Next;
+  }
+  cout<<n->Value<<"\n";
+}
+
 int main()
 {
     Node* head = new Node();
     Node* second = new Node();
     Node* third = new Node();
+    Node* fourth = new Node();
 
     head->Value = 1;
     head->Next = second;
     second->Value = 2;
     second->Next = third;
     third->Value = 3;
-    third->Next = NULL;
-    
+    third->Next = fourth;
+    fourth->Next=NULL;
     // insertAtTheFront(&head,-1);
     // insertAtTheFront(&head,-2);
     // insertAtTheEnd(&head,4);
     // insertAtTheEnd(&head,5);
 
-    insertAfter(head,-1);
-    insertAfter(second,-2);
-
-    printList(head);
+    printLastThirdNode(head);
 
     system("pause>0");
 }
